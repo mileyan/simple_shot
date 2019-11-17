@@ -54,7 +54,13 @@ python ./src/inatural_split.py --data path-to-inat/setup --split ./split/inatura
 ```
 
 ### 3 Train and Test
-You can easily download all pretrained models and configure files by running
+You can download the pretrained models from:
+
+Google Drives: https://drive.google.com/open?id=14ZCz3l11ehCl8_E1P0YSbF__PK4SwcBZ
+
+BaiduYun: https://pan.baidu.com/s/1tC2IU1JBL5vPNmnxXMu2sA  code:d3j5
+
+Or, you can download them by running
 ```angular2
 cd ./src
 python download_models.py
@@ -68,7 +74,7 @@ The evaluation command of mini/tiered-imagenet is
 ```angular2
 python ./src/train.py -c ./configs/mini/softmax/conv4.config --evaluate --enlarge
 ```
-The evaluation command of INat is
+To evaluate INat models,
 ```angular2
 python ./src/test_inatural.py -c ./configs/inatural/softmax/conv4.config --evaluate --enlarge
 ```
