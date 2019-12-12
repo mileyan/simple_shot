@@ -66,17 +66,23 @@ cd ./src
 python download_models.py
 ```
 This repo includes `Resnet-10/18/34/50`, `Densenet-121`, `Conv-4`, `WRN`, `MobileNet` models.
-For instance, If you would like to train a Conv-4 on Mini-ImageNet, you can run
+For instance, to train a Conv-4 on Mini-ImageNet or Tiered-ImageNet,  
 ```angular2
-python ./src/train.py -c ./configs/mini/softmax/conv4.config
+python ./src/train.py -c ./configs/mini/softmax/conv4.config --data path-to-mini-imagenet/
 ```
-The evaluation command of mini/tiered-imagenet is
 ```angular2
-python ./src/train.py -c ./configs/mini/softmax/conv4.config --evaluate --enlarge
+python ./src/train.py -c ./configs/tiered/softmax/conv4.config --data path-to-tiered-imagenet/data/
+```
+The evaluation command of Mini/Tiered-ImageNet is
+```angular2
+python ./src/train.py -c ./configs/mini/softmax/conv4.config --evaluate --enlarge --data path-to-mini-imagenet/
+```
+```angular2
+python ./src/train.py -c ./configs/tiered/softmax/conv4.config --evaluate --enlarge --data  path-to-tiered-imagenet/data/
 ```
 To evaluate INat models,
 ```angular2
-python ./src/test_inatural.py -c ./configs/inatural/softmax/conv4.config --evaluate --enlarge
+python ./src/test_inatural.py -c ./configs/inatural/softmax/conv4.config --evaluate --enlarge --data path-to-inatural/setup/
 ```
 ## Contact
 If you have any question, please feel free to email us.
