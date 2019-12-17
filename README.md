@@ -31,6 +31,9 @@ a nearest-neighbor classifier used in combination with mean-subtraction
 and L2-normalization outperforms prior results in three out of five settings
 on the miniImageNet dataset.
 
+## Update:
+* Dec. 17th. Add configuration and pretrained models of prototypical network with conv4 backbone.
+
 ## Usage
 ### 1. Dependencies
 - Python 3.5+
@@ -54,18 +57,21 @@ python ./src/inatural_split.py --data path-to-inat/setup --split ./split/inatura
 ```
 
 ### 3 Train and Test
-You can download the pretrained models from:
+You can manually download the pretrained models. 
+Then copy all the files to the corresponding folder.
 
 Google Drives: https://drive.google.com/open?id=14ZCz3l11ehCl8_E1P0YSbF__PK4SwcBZ
 
 BaiduYun: https://pan.baidu.com/s/1tC2IU1JBL5vPNmnxXMu2sA  code:d3j5
 
-Or, you can download them by running
+
+Or, you can run the follwing command to download them:
 ```angular2
 cd ./src
 python download_models.py
 ```
 This repo includes `Resnet-10/18/34/50`, `Densenet-121`, `Conv-4`, `WRN`, `MobileNet` models.
+
 For instance, to train a Conv-4 on Mini-ImageNet or Tiered-ImageNet,  
 ```angular2
 python ./src/train.py -c ./configs/mini/softmax/conv4.config --data path-to-mini-imagenet/
@@ -73,7 +79,7 @@ python ./src/train.py -c ./configs/mini/softmax/conv4.config --data path-to-mini
 ```angular2
 python ./src/train.py -c ./configs/tiered/softmax/conv4.config --data path-to-tiered-imagenet/data/
 ```
-The evaluation command of Mini/Tiered-ImageNet is
+To evaluate the models on Mini/Tiered-ImageNet
 ```angular2
 python ./src/train.py -c ./configs/mini/softmax/conv4.config --evaluate --enlarge --data path-to-mini-imagenet/
 ```
@@ -84,6 +90,14 @@ To evaluate INat models,
 ```angular2
 python ./src/test_inatural.py -c ./configs/inatural/softmax/conv4.config --evaluate --enlarge --data path-to-inatural/setup/
 ```
+New:
+To train and evaluate the Conv-4 model on Mini-ImageNet with prototypical training:
+```angular2
+python ./src/train.py -c ./configs/mini/protonet/{conv4_shot1 | conv4_shot5}.config --data path-to-mini-imagenet/
+python ./src/train.py -c ./configs/mini/protonet/{conv4_shot1 | conv4_shot5}.config --data path-to-mini-imagenet/ --evaluate
+```
+
+
 ## Contact
 If you have any question, please feel free to email us.
 
